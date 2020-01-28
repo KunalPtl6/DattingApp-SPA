@@ -21,6 +21,14 @@ export class ErrorInterceptor implements HttpInterceptor {
                     }
                     const serverError = error.error;
                     let modalStateErrors = '';
+                    // Commentd code for validation 2.2 version in web api
+                    // if (serverError.error && typeof serverError.error === 'object') {
+                    //     for (const key in serverError.error) {
+                    //         if (serverError.error[key]) {
+                    //             modalStateErrors += serverError.error[key] + '\n';
+                    //         }
+                    //     }
+                    // }
                     if (serverError) {
                         for (const key in serverError) {
                             if (serverError[key]) {
