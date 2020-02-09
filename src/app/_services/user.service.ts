@@ -19,4 +19,8 @@ export class UserService {
     return this.http.get<User>(this.baseurl + 'GetUserById/' + Id);
   }
 
+  updateUser(id: number, objUser: User) {
+    return this.http.put(this.baseurl + 'UpdateUser/' + id, objUser);
+  }
+
 }

@@ -22,6 +22,9 @@ import { appRoutes } from './routes';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { MemberDetailsResolver } from './_resolver/member-detail-resolver';
 import { MemberListResolver } from './_resolver/member-list-resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolver/member-edit-resolver';
+import { PreventUnsavedChanges } from './_gaurds/prevent-unsaved-changes';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -45,7 +48,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
-      MemberDetailsComponent
+      MemberDetailsComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -69,6 +73,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       ErrorInterceptorProvide,
       MemberDetailsResolver,
       MemberListResolver,
+      MemberEditResolver,
+      PreventUnsavedChanges,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
    ],
    bootstrap: [
