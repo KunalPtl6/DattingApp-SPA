@@ -13,7 +13,7 @@ export class AlertifyService {
       if (e) {
         okCallback();
       } else { }
-    });
+    }).setHeader('Alert');
   }
 
   success(messsage: string) {

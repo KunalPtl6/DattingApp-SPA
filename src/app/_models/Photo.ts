@@ -3,5 +3,6 @@ export interface Photo {
     url: string;
     Description: string;
     AddDate: Date;
-    IsMain: boolean;
+    isMain: boolean;
+    PublicId: string;
 }
