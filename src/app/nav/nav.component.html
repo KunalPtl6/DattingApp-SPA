@@ -13,10 +13,10 @@
         <a class="nav-link" [routerLink]="['/messages']">Messages</a>
       </li>      
     </ul>
-
+     
     <div class="dropdown" dropdown *ngIf="loggedIn()">
       <span class="m-2">
-        <img src={{photoUrl}}>
+        <img src="{{photoUrl || '../../assets/user.png'}}">
       </span>
       <a class="dropdown-toggle text-light" dropdownToggle>
         Welcome {{authService.decodedToken?.unique_name | titlecase}}
