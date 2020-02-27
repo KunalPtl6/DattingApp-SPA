@@ -49,4 +49,13 @@ export class MemberDetailsComponent implements OnInit {
     return imageurl;
   }
 
+  AgeCalculate(BirthDate: Date) {
+    let Age = 0;
+    if (BirthDate != null && BirthDate !== undefined) {
+      const timeDiff = Math.abs(Date.now() - new Date(BirthDate).getTime());
+      Age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    }
+    return Age + ' Years';
+  }
+
 }

@@ -20,15 +20,15 @@
           </div>
           <div>
             <strong>Age:</strong>
-            <p>{{user?.age}}</p>
+            <p>{{AgeCalculate(user?.dateOfBirth | date: 'medium')}}</p>
           </div>
           <div>
             <strong>Last Active:</strong>
-            <p>{{user?.lastActive}}</p>
+            <p>{{user?.lastActive | timeAgo}}</p>
           </div>
           <div>
             <strong>Member since:</strong>
-            <p>{{user?.Created}}</p>
+            <p>{{user?.created | date}}</p>
           </div>
         </div>
         <div class="card-footer">                    

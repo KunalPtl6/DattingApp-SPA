@@ -4,9 +4,9 @@ export interface User {
     username: string;
     Gender: string;
     age: number;
-    DateOfBirth: string;
+    dateOfBirth: string;
     knownAs: string;
-    Created: Date;
+    created: Date;
     lastActive: Date;
     introduction?: string;
     lookingFor?: string;
