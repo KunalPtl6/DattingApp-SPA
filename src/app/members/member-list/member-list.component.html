@@ -1,7 +1,68 @@
-<div class="container mt-5">
-  <div class="row">
+<div class="text-center mt-3">
+  <h2>Your matches - {{pagination.totalItems}} found</h2>
+</div>    
+
+<div class="container mt-3">
+  <div class="row">  
+    
+</div>
+
+<div class="container mt-3">
+
+  <form [formGroup]="filterForm" (ngSubmit)="LoadUsers()" class="form-inline" novalidate>
+    <div class="form-group">
+      <label for="minAge">Age From</label>
+      <input type="number" min="18" formControlName="minAge" class="form-control ml-1" style="width: 70px" id="minAge" name="minAge">
+    </div>
+
+    <div class="form-group px-2">
+      <label for="maxAge">Age To</label>
+      <input type="number" max="99" formControlName="maxAge" class="form-control ml-1" style="width: 70px" id="maxAge" name="maxAge">
+    </div>
+
+    <div class="form-group px-2">
+      <label for="gender">Show: </label>
+      <select class="form-control ml-1" style="width: 130px" formControlName="gender" id="gender" name="gender">
+        <option value="ALL">All</option>
+        <option *ngFor="let item of GenderDDL" [value]='item.key'>            
+          {{item.value}}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+    <button type="button" class="btn btn-info" style="margin-left:10px" (click)="resetFilter()">Reset Filter</button>
+
+    <div class="col">
+      <div class="form-group float-right ">
+        <div class="btn-group"btnRadioGroup formControlName="orderBy">
+          <label btnRadio="lastActive" (click)="LoadUsers()" class="btn btn-primary"
+                 tabindex="0" role="button">Last Active</label>
+          <label btnRadio="created" (click)="LoadUsers()" class="btn btn-primary"
+                 tabindex="0" role="button">Newest Members</label>           
+        </div>
+      </div>       
+    </div>
+
+  </form>
+  
+  <div class="row mt-3">
     <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
       <app-member-card [user]="user"></app-member-card>
     </div>
   </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <pagination
+    [boundaryLinks]="true"
+    [totalItems]="pagination.totalItems"
+    [itemsPerPage]="pagination.itemsPerPages"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChange($event)"
+    previousText="&lsaquo;"
+    nextText="&rsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;"
+  >
+  </pagination>
 </div>
