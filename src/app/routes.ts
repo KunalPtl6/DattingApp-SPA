@@ -10,13 +10,16 @@ import { MemberDetailsResolver } from './_resolver/member-detail-resolver';
 import { MemberListResolver } from './_resolver/member-list-resolver';
 import { MemberEditResolver } from './_resolver/member-edit-resolver';
 import { PreventUnsavedChanges } from './_gaurds/prevent-unsaved-changes';
+import { LikesResolver } from './_resolver/likes-resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     {
         path: '', runGuardsAndResolvers: 'always', canActivate: [AuthGuard],
         children: [
-            { path: 'lists', component: ListsComponent },
+            { path: 'lists', component: ListsComponent,
+                resolve: { users: LikesResolver }
+            },
             {
                 path: 'members', component: MemberListComponent,
                 resolve: { users: MemberListResolver }
